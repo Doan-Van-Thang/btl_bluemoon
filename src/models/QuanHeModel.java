@@ -28,6 +28,6 @@ public class QuanHeModel {
 	public void setQuanHe(String quanHe) {
 		this.quanHe = quanHe;
 	}
-
-
+	
+	
 }

@@ -13,7 +13,7 @@ import java.util.regex.Pattern;
  * @Thanh
  */
 public class StringService {
-
+    
     public static String covertToString(String value) {
         try {
               String temp = Normalizer.normalize(value, Normalizer.Form.NFD);

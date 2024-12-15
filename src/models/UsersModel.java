@@ -5,7 +5,7 @@ public class UsersModel {
 	int id;
 	String username;
 	String passwd;
-
+	
 	public UsersModel() {}
 	public UsersModel(String username, String passwd) {
 		this.username = username;
@@ -29,6 +29,6 @@ public class UsersModel {
 	public void setPasswd(String passwd) {
 		this.passwd = passwd;
 	}
-
-
+	
+	
 }

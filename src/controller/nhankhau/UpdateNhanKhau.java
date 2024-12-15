@@ -7,16 +7,16 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 import models.NhanKhauModel;
 import services.NhanKhauService;
 
 public class UpdateNhanKhau {
 	private int maNhanKhau;
-
+	
 	@FXML
 	private TextField tfMaNhanKhau;
 	@FXML
@@ -88,18 +88,18 @@ public class UpdateNhanKhau {
 			alert.showAndWait();
 			return;
 		}
-
+		
 		// ghi nhan gia tri ghi tat ca deu da hop le
 		String tenString = tfTenNhanKhau.getText();
 		int tuoiInt = Integer.parseInt(tfTuoi.getText());
 		String cmndString = tfSoCMND.getText();
 		String sdtString = tfSoDienThoai.getText();
-
+		
 		// xoa di nhan khau hien tai va them vao nhan khau vua cap nhat
 		new NhanKhauService().update(maNhanKhau, cmndString, tenString, tuoiInt, sdtString);
-
+		
 		Stage stage = (Stage)((Node) event.getSource()).getScene().getWindow();
         stage.close();
-
+		
 	}
 }

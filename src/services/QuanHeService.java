@@ -50,7 +50,7 @@ public class QuanHeService {
 
 		Connection connection = MysqlConnection.getMysqlConnection();
 		String query = "SELECT * FROM quan_he";
-		PreparedStatement preparedStatement = connection.prepareStatement(query);
+		PreparedStatement preparedStatement = (PreparedStatement) connection.prepareStatement(query);
 		ResultSet rs = preparedStatement.executeQuery();
 		while (rs.next()) {
 			QuanHeModel quanHeModel = new QuanHeModel();

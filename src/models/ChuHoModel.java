@@ -3,7 +3,7 @@ package models;
 public class ChuHoModel {
 	int maHo;
 	int idChuHo;
-
+	
 	public ChuHoModel() {}
 	public ChuHoModel(int maHo, int idChuHo) {
 		this.maHo = maHo;
@@ -21,6 +21,6 @@ public class ChuHoModel {
 	public void setIdChuHo(int idChuHo) {
 		this.idChuHo = idChuHo;
 	}
-
-
+	
+	
 }

@@ -8,9 +8,9 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 import models.ChuHoModel;
 import models.HoKhauModel;
@@ -51,7 +51,7 @@ public class AddHoKhau {
 			alert.showAndWait();
 			return;
 		}
-
+		
 		// kiem tra maHo co bi trung voi maHo nao da ton tai truoc do hay khong
 		List<HoKhauModel> listHoKhauModels = new HoKhauService().getListHoKhau();
 		for(HoKhauModel hokhau : listHoKhauModels) {
@@ -130,7 +130,7 @@ public class AddHoKhau {
 			alert.showAndWait();
 			return;
 		}
-
+		
 		// ghi nhan cac gia tri khi tat ca deu hop le
 		int maHo = Integer.parseInt(tfMaHoKhau.getText());
 		String diaChi = tfDiaChi.getText();
@@ -139,15 +139,15 @@ public class AddHoKhau {
 		int tuoiChuHo = Integer.parseInt(tfTuoi.getText());
 		String cmndChuHo = tfCMND.getText();
 		String sdtChuHo = tfSoDienThoai.getText();
-
+		
 		HoKhauModel hoKhauModel = new HoKhauModel(maHo, 0, diaChi);
 		NhanKhauModel nhanKhauModel = new NhanKhauModel(maChuHo, cmndChuHo, tenChuHo, tuoiChuHo, sdtChuHo);
-
+		
 		new HoKhauService().add(hoKhauModel);
 		new NhanKhauService().add(nhanKhauModel);
 		new QuanHeService().add(new QuanHeModel(maHo,maChuHo,"Là chủ hộ"));
 		new ChuHoService().add(new ChuHoModel(maHo, maChuHo));
-
+		
 		Stage stage = (Stage)((Node) event.getSource()).getScene().getWindow();
         stage.close();
 	}

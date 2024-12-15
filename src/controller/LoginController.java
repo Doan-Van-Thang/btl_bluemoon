@@ -51,7 +51,7 @@ public class LoginController {
 	                // Đăng nhập thành công
 	                Parent home = FXMLLoader.load(getClass().getResource("/views/Home3.fxml"));
 	                Stage stage = (Stage)((Node) event.getSource()).getScene().getWindow();
-	                stage.setScene(new Scene(home,800,600));
+	                stage.setScene(new Scene(home));
 	                stage.setResizable(false);
 	                stage.show();
 	            }

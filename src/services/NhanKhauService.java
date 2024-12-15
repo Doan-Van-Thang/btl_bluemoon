@@ -33,7 +33,7 @@ public class NhanKhauService {
 	public boolean del(int ID) throws ClassNotFoundException, SQLException {
 		Connection connection = MysqlConnection.getMysqlConnection();
 		String query = "SELECT * FROM nop_tien WHERE IDNopTien='" + ID + "';";
-		PreparedStatement preparedStatement = connection.prepareStatement(query);
+		PreparedStatement preparedStatement = (PreparedStatement) connection.prepareStatement(query);
 		ResultSet rs = preparedStatement.executeQuery();
 		while (rs.next()) {
 			query = "DELETE FROM nop_tien WHERE IDNopTien='" + ID + "'";
@@ -42,7 +42,7 @@ public class NhanKhauService {
 		}
 
 		query = "SELECT * FROM chu_ho WHERE chu_ho.IDChuHo='" + ID + "';";
-		preparedStatement = connection.prepareStatement(query);
+		preparedStatement = (PreparedStatement) connection.prepareStatement(query);
 		rs = preparedStatement.executeQuery();
 		while (rs.next()) {
 			query = "DELETE FROM chu_ho WHERE IDChuHo='" + ID + "'";
@@ -51,7 +51,7 @@ public class NhanKhauService {
 		}
 
 		query = "SELECT * FROM quan_he WHERE quan_he.IDThanhVien='" + ID + "';";
-		preparedStatement = connection.prepareStatement(query);
+		preparedStatement = (PreparedStatement) connection.prepareStatement(query);
 		rs = preparedStatement.executeQuery();
 		while (rs.next()) {
 			query = "DELETE FROM quan_he WHERE IDThanhVien='" + ID + "'";
@@ -86,7 +86,7 @@ public class NhanKhauService {
 
 		Connection connection = MysqlConnection.getMysqlConnection();
 		String query = "SELECT * FROM nhan_khau";
-		PreparedStatement preparedStatement = connection.prepareStatement(query);
+		PreparedStatement preparedStatement = (PreparedStatement) connection.prepareStatement(query);
 		ResultSet rs = preparedStatement.executeQuery();
 		while (rs.next()) {
 			NhanKhauModel nhanKhauModel = new NhanKhauModel(rs.getInt("ID"), rs.getString("CMND"), rs.getString("Ten"),

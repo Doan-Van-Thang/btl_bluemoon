@@ -32,7 +32,7 @@ public class HoKhauService {
 
 		Connection connection = MysqlConnection.getMysqlConnection();
 		String query = "SELECT * FROM chu_ho WHERE chu_ho.MaHo='" + maHo + "';";
-		PreparedStatement preparedStatement = connection.prepareStatement(query);
+		PreparedStatement preparedStatement = (PreparedStatement) connection.prepareStatement(query);
 		ResultSet rs = preparedStatement.executeQuery();
 		while (rs.next()) {
 			query = "DELETE FROM chu_ho WHERE MaHo='" + maHo + "'";
@@ -41,7 +41,7 @@ public class HoKhauService {
 		}
 
 		query = "SELECT * FROM quan_he WHERE quan_he.MaHo='" + maHo + "';";
-		preparedStatement = connection.prepareStatement(query);
+		preparedStatement = (PreparedStatement) connection.prepareStatement(query);
 		rs = preparedStatement.executeQuery();
 		while (rs.next()) {
 			query = "DELETE FROM quan_he WHERE MaHo='" + maHo + "'";
@@ -74,7 +74,7 @@ public class HoKhauService {
 
 		Connection connection = MysqlConnection.getMysqlConnection();
 		String query = "SELECT * FROM ho_khau";
-		PreparedStatement preparedStatement = connection.prepareStatement(query);
+		PreparedStatement preparedStatement = (PreparedStatement) connection.prepareStatement(query);
 		ResultSet rs = preparedStatement.executeQuery();
 		while (rs.next()) {
 			HoKhauModel hoKhauModel = new HoKhauModel(rs.getInt("MaHo"), rs.getInt("SoThanhVien"),

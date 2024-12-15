@@ -14,9 +14,9 @@ public class ChuHoService {
 	//checked
 		public boolean add(ChuHoModel chuHoModel) throws ClassNotFoundException, SQLException {
 			Connection connection = MysqlConnection.getMysqlConnection();
-	        String query = "INSERT INTO chu_ho(MaHo, IDChuHo)"
+	        String query = "INSERT INTO chu_ho(MaHo, IDChuHo)" 
 	                    + " values (?, ?)";
-
+	        
 	        PreparedStatement preparedStatement = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
 	        preparedStatement.setInt(1,chuHoModel.getMaHo());
 	        preparedStatement.setInt(2, chuHoModel.getIdChuHo());
@@ -25,7 +25,7 @@ public class ChuHoService {
 	        connection.close();
 			return true;
 		}
-
+		
 		// cheked
 		public boolean del(int maHo, int idChuHo ) throws ClassNotFoundException, SQLException {
 			String sql = "DELETE FROM chu_ho WHERE  MaHo='" +maHo + "' AND IDChuHo = '" +idChuHo+"';" ;
@@ -36,14 +36,14 @@ public class ChuHoService {
 	            connection.close();
 	            return true;
 		}
-
+		
 		// checked
 		public List<ChuHoModel> getListChuHo() throws ClassNotFoundException, SQLException{
 			List<ChuHoModel> list = new ArrayList<>();
-
+			
 			Connection connection = MysqlConnection.getMysqlConnection();
 	        String query = "SELECT * FROM chu_ho";
-	        PreparedStatement preparedStatement = connection.prepareStatement(query);
+	        PreparedStatement preparedStatement = (PreparedStatement)connection.prepareStatement(query);
 	        ResultSet rs = preparedStatement.executeQuery();
 	        while (rs.next()){
 	            ChuHoModel chuHoModel = new ChuHoModel();
@@ -51,7 +51,7 @@ public class ChuHoService {
 	            chuHoModel.setIdChuHo(rs.getInt("IDChuHo"));
 	            list.add(chuHoModel);
 	       }
-
+	       
 	        preparedStatement.close();
 	        connection.close();
 			return list;

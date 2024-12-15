@@ -12,6 +12,7 @@ import java.util.ResourceBundle;
 import java.util.regex.Pattern;
 
 import controller.hokhau.UpdateHoKhau;
+import controller.khoanthu.UpdateKhoanThu;
 import javafx.beans.property.ReadOnlyStringWrapper;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -21,18 +22,19 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.SingleSelectionModel;
 import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableColumn.CellDataFeatures;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.TableColumn.CellDataFeatures;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import models.ChuHoModel;
 import models.HoKhauModel;
+import models.KhoanThuModel;
 import models.NhanKhauModel;
 import models.QuanHeModel;
 import services.ChuHoService;
@@ -78,11 +80,11 @@ public class HoKhauController implements Initializable {
 		});
 
 		// Thiet lap Table views
-		colMaHoKhau.setCellValueFactory(new PropertyValueFactory<>("maHo"));
+		colMaHoKhau.setCellValueFactory(new PropertyValueFactory<HoKhauModel, String>("maHo"));
 		colMaChuHo.setCellValueFactory((CellDataFeatures<HoKhauModel, String> p) -> new ReadOnlyStringWrapper(
 				mapIdToTen.get(mapMahoToId.get(p.getValue().getMaHo())).toString()));
-		colSoThanhVien.setCellValueFactory(new PropertyValueFactory<>("soThanhvien"));
-		colDiaChi.setCellValueFactory(new PropertyValueFactory<>("diaChi"));
+		colSoThanhVien.setCellValueFactory(new PropertyValueFactory<HoKhauModel, String>("soThanhvien"));
+		colDiaChi.setCellValueFactory(new PropertyValueFactory<HoKhauModel, String>("diaChi"));
 		tvHoKhau.setItems(listValueTableView);
 
 		// Thiet lap Combo box
@@ -274,9 +276,8 @@ public class HoKhauController implements Initializable {
 		UpdateHoKhau updateHoKhau = loader.getController();
 
 		// bat loi truong hop khong hop le
-		if (updateHoKhau == null) {
+		if (updateHoKhau == null)
 			return;
-		}
 		if (hoKhauModel == null) {
 			Alert alert = new Alert(AlertType.WARNING, "Chọn hộ khẩu cần sửa !", ButtonType.OK);
 			alert.setHeaderText(null);

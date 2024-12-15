@@ -17,16 +17,17 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.SingleSelectionModel;
 import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableColumn.CellDataFeatures;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.TableColumn.CellDataFeatures;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+import models.KhoanThuModel;
 import models.NhanKhauModel;
 import models.QuanHeModel;
 import services.NhanKhauService;
@@ -53,7 +54,7 @@ public class ChooseNguoiNop implements Initializable {
 	private ComboBox<String> cbChooseSearch;
 
 	private NhanKhauModel nhanKhauChoose;
-
+	
 	public NhanKhauModel getNhanKhauChoose() {
 		return nhanKhauChoose;
 	}
@@ -77,11 +78,11 @@ public class ChooseNguoiNop implements Initializable {
 		});
 
 		// thiet lap cac cot cho tableviews
-		colMaNhanKhau.setCellValueFactory(new PropertyValueFactory<>("id"));
-		colTen.setCellValueFactory(new PropertyValueFactory<>("ten"));
-		colTuoi.setCellValueFactory(new PropertyValueFactory<>("tuoi"));
-		colCMND.setCellValueFactory(new PropertyValueFactory<>("cmnd"));
-		colSDT.setCellValueFactory(new PropertyValueFactory<>("sdt"));
+		colMaNhanKhau.setCellValueFactory(new PropertyValueFactory<NhanKhauModel, String>("id"));
+		colTen.setCellValueFactory(new PropertyValueFactory<NhanKhauModel, String>("ten"));
+		colTuoi.setCellValueFactory(new PropertyValueFactory<NhanKhauModel, String>("tuoi"));
+		colCMND.setCellValueFactory(new PropertyValueFactory<NhanKhauModel, String>("cmnd"));
+		colSDT.setCellValueFactory(new PropertyValueFactory<NhanKhauModel, String>("sdt"));
 		try {
 			colMaHo.setCellValueFactory((CellDataFeatures<NhanKhauModel, String> p) -> new ReadOnlyStringWrapper(
 					mapIdToMaho.get(p.getValue().getId()).toString()));
@@ -215,11 +216,11 @@ public class ChooseNguoiNop implements Initializable {
 	public void xacnhan(ActionEvent event) {
 		nhanKhauChoose = tvNhanKhau.getSelectionModel().getSelectedItem();
 		setNhanKhauChoose(nhanKhauChoose);
-
+		
 		Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 		stage.close();
 	}
-
+	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		try {

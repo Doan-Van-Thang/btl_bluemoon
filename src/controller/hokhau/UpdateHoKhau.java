@@ -9,9 +9,9 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 import models.ChuHoModel;
 import models.HoKhauModel;
@@ -37,7 +37,7 @@ public class UpdateHoKhau {
 	public void setHoKhauModel(HoKhauModel hoKhauModel) throws ClassNotFoundException, SQLException {
 		this.hoKhauModel = hoKhauModel;
 
-		Map<Integer, Integer> mapMahoToID = new TreeMap<>();
+		Map<Integer, Integer> mapMahoToID = new TreeMap<Integer, Integer>();
 		List<ChuHoModel> listChuHo = new ChuHoService().getListChuHo();
 		listChuHo.stream().forEach(chuho -> {
 			mapMahoToID.put(chuho.getMaHo(), chuho.getIdChuHo());
@@ -67,7 +67,7 @@ public class UpdateHoKhau {
 			alert.showAndWait();
 			return;
 		}
-
+		
 		String diaChiString = tfDiaChi.getText();
 		new HoKhauService().update(hoKhauModel.getMaHo(), diaChiString);
 		Stage stage = (Stage)((Node) event.getSource()).getScene().getWindow();

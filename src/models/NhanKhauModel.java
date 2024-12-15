@@ -6,16 +6,16 @@ public class NhanKhauModel {
 	String ten;
 	int tuoi;
 	String sdt;
-
+	
 	public NhanKhauModel() {}
-
+	
 	public NhanKhauModel(String cmnd, String ten, int tuoi , String sdt) {
 		this.cmnd = cmnd;
 		this.ten=ten;
 		this.tuoi=tuoi;
 		this.sdt = sdt;
 	}
-
+	
 	public NhanKhauModel(int id,String cmnd, String ten, int tuoi , String sdt) {
 		this.id=id;
 		this.cmnd = cmnd;
@@ -63,6 +63,6 @@ public class NhanKhauModel {
 	public void setSdt(String sdt) {
 		this.sdt = sdt;
 	}
-
-
+	
+	
 }
